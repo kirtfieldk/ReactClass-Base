@@ -1,28 +1,31 @@
-import React, { Component } from 'react'
+import React, { Component, SyntheticEvent } from 'react'
 import {Note} from '../../model/Note'
 import checkMark from './check-mark.svg';
 import classNames from 'classnames';
-
-export default class NotesSidebar extends Component<any, any> {
-    constructor(props: any) {
+import {NoteAndFunction} from '../../model/NoteAndFunction'
+export default class NotesSidebar extends Component<NoteAndFunction> {
+  state: NoteAndFunction;
+    constructor(props: NoteAndFunction) {
         super(props);
     
         this.state = {
-          notes: this.props.note.notes,
-          currentNoteIndex: this.props.note.currentNoteIndex,
-          selectNote: this.props.selectNote.bind(this)
+          note: {
+            notes: this.props.note.notes,
+            currentNoteIndex: this.props.note.currentNoteIndex,
+          },
+          function: this.props.function
         };
       }
     getNotesRows() {
         // TODO fix the selected row highlight, which breaks on subsequent clicks to the sidebar.
-        return this.state.notes.map((note: Note, index: number) => (
+        return this.state.note.notes.map((note: Note, index: number) => (
           <div
             key={index}
             className={classNames('NotesSidebarItem', {
-              selected: this.state.notes.indexOf(note) === this.state.currentNoteIndex
+              selected: this.state.note.notes.indexOf(note) === this.state.note.currentNoteIndex
             })}
-            onClick={(e:any) => this.selectNote(e)}
-            id={this.state.notes.indexOf(note)}
+            onClick={(e:SyntheticEvent) => this.state.function(e)}
+            id={this.state.note.notes.indexOf(note) + ''}
           >
             <h4 className='NotesSidebarItem-title'>{note.subject}</h4>
             {note.read && <img alt='Check Mark' src={checkMark} />}

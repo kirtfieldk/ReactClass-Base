@@ -1,12 +1,13 @@
 import * as React from 'react';
 import {Note} from '../../model/Note'
-
-class UnreadCount extends React.Component<any, any> {
-    constructor(props: any) {
+import {NoteIndex} from '../../model/NoteIndex'
+class UnreadCount extends React.Component<NoteIndex> {
+    state: NoteIndex
+    constructor(props: NoteIndex) {
         super(props);
         this.state = {
-            notes: props.notes
-        }
+            notes: this.props.notes, 
+            currentNoteIndex: this.props.currentNoteIndex}
       }
     
 

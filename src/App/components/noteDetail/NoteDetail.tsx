@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
-
-export default class NoteDetail extends Component<any, any> {
-    constructor(props: any) {
+import {NoteIndex} from '../../model/NoteIndex'
+export default class NoteDetail extends Component<NoteIndex> {
+    state:NoteIndex;
+    constructor(props: NoteIndex) {
         super(props);
     
         this.state = {
-          notes: [],
-          currentNoteIndex: 0
+          notes: this.props.notes,
+          currentNoteIndex: this.props.currentNoteIndex
         };
       }
         // TODO this callback isn't working
     markAsRead() {
-        this.setState((currentState: any) => {
+        this.setState((currentState: NoteIndex) => {
         let marked = {
             ...currentState.notes[currentState.currentNoteIndex],
             read: true
