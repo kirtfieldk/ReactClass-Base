@@ -2,19 +2,32 @@
   height: 5rem;
   display: block;
 }
-
+.App {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
 .App-header {
   background-color: #636463;
   padding: 1rem 1rem 0 1rem;
   color: white;
   display: flex;
+  height: 10vh;
 }
-
+.row {
+  grid-column: 1/-1;
+}
 .App-title {
   font-size: 1.5em;
   flex: 1;
 }
-
+.sidebar {
+  grid-column: 1/4;
+  height: 100vh;
+  background: #a19689;
+}
+.details {
+  grid-column: 5/-1;
+}
 .App-title-unread-count {
   background: #ee3524;
   color: white;
