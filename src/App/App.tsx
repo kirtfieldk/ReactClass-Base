@@ -4,28 +4,28 @@ import React, { Component, SyntheticEvent } from 'react';
 
 // your editor might show these svg imports as errors "Cannot find module", safe to ignore
 import logo from './logo.svg';
-import data from '../db.json';
 import UnreadCount from './components/unreadCount/UnreadCount';
 import NotesSidebar from './components/notesSidebar/NotesSidebar';
 import NoteDetail from './components/noteDetail/NoteDetail';
-import { NoteIndex } from './model/NoteIndex';
+import axios from 'axios';
 import {
   NoteAndFunction,
   defaultNoteAndFunctionState,
 } from './model/NoteAndFunction';
 class App extends Component<{}> {
   state: NoteAndFunction = defaultNoteAndFunctionState;
-  componentWillMount() {
+  componentDidMount = async () => {
     // TODO fetch notes and push them into state.
+    const response = await axios.get('http://localhost:4000/notes');
     this.setState({
       updateSelected: this.selectNote.bind(this),
       updateRead: this.markAsRead.bind(this),
       note: {
-        notes: data.notes,
+        notes: response.data,
         currentNoteIndex: 0,
       },
     });
-  }
+  };
   // TODO this callback isn't working
   // SelectNote will set the state to the correct note selected by the user
   // In addition, we will also populate the SelectedNote

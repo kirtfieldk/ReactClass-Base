@@ -4,7 +4,6 @@
 */
 import { SyntheticEvent } from 'react';
 import { NoteIndex } from './NoteIndex';
-import { Note } from './Note';
 export interface NoteAndFunction {
   updateSelected: (e: SyntheticEvent) => void;
   updateRead: () => void;
