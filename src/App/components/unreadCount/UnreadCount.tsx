@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { Note } from '../../model/Note';
 import { NoteIndex } from '../../model/NoteIndex';
+/*
+    Grabs NoteIndex prop from parent and simple iterate through the array
+    and count all notes marked as read, with .filter method
+*/
 class UnreadCount extends React.Component<NoteIndex> {
   /* RenderUnread will render the numer of unread notes */
   renderUnread() {

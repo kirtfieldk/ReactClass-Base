@@ -42,7 +42,6 @@ class App extends Component<{}> {
   // TODO this callback isn't working
   markAsRead() {
     this.setState((currentState: NoteAndFunction) => {
-      console.log(currentState);
       let marked = {
         ...currentState.note.notes[
           currentState.note.currentNoteIndex

@@ -3,6 +3,13 @@ import { Note } from '../../model/Note';
 import checkMark from '../../check-mark.svg';
 import classNames from 'classnames';
 import { NoteAndFunction } from '../../model/NoteAndFunction';
+/*
+  Grabs NoteAndFunction prop from parent and uses the .map function to 
+  return elements of notes array into sidebar
+  When user clicks on any note, we will call the updateSelected in props
+  that triggers the function in App component to update state with 
+  accurate currentIndex
+*/
 export default class NotesSidebar extends Component<NoteAndFunction> {
   getNotesRows() {
     // TODO fix the selected row highlight, which breaks on subsequent clicks to the sidebar.
